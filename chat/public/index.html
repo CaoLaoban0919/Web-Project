@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat | Cloud</title>
+  <link rel="stylesheet" href="/chat/styles.css?v=20260518-0012" />
+  <link rel="stylesheet" href="/chat/vendor/katex.min.css?v=20260516-2040" />
+</head>
+<body>
+  <div class="bg"></div>
+  <div id="mobileSidebarBackdrop" class="mobile-sidebar-backdrop" hidden></div>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="mobile-sidebar-head">
+        <div class="mobile-sidebar-title">功能菜单</div>
+        <button id="mobileSidebarCloseBtn" class="mobile-sidebar-close" type="button" aria-label="关闭菜单">×</button>
+      </div>
+      <div class="brand"><div class="brand-logo"><img src="/chat/assets/brand-icon.png?v=20260516-2026" alt="Chat" /></div><div><strong>Chat</strong><small>default</small></div></div>
+      <button id="sideResetBtn" class="new-chat" type="button">＋ 新建会话</button>
+      <div class="session-panel">
+        <div class="side-title">历史对话</div>
+        <div id="sessionList" class="session-list"><div class="session-empty">正在加载...</div></div>
+      </div>
+      <a class="side-home-bottom" href="/">← 返回首页</a>
+    </aside>
+    <main class="shell">
+      <div class="mobile-topbar">
+        <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" aria-label="打开功能菜单">☰</button>
+        <div class="mobile-title"><strong>Chat</strong><small>历史 / 新建 / 返回首页</small></div>
+      </div>
+    <section class="context-card context-drawer" id="contextCard">
+      <button class="context-toggle" id="contextToggle" type="button">
+        <span class="context-main">
+          <span class="context-icon">✨</span>
+          <span>
+            <strong>知识库嵌入</strong>
+            <small id="kbStatus">正在加载知识库...</small>
+          </span>
+        </span>
+        <span class="context-caret">⌄</span>
+      </button>
+      <div class="context-body" id="contextBody">
+        <div class="context-row">
+          <span class="context-help">选择要嵌入本次回答的知识库资料</span>
+          <label class="soft-upload"><input id="kbUploadInput" type="file" accept=".md,.txt,text/plain,text/markdown" multiple />＋ 上传资料</label>
+        </div>
+        <div id="kbFiles" class="kb-files"></div>
+      </div>
+    </section>
+    <section id="messages" class="messages">
+      <div class="msg assistant"><div class="avatar"><img src="/chat/assets/assistant-avatar.png?v=20260516-2033" alt="AI" /></div><div class="bubble">你好呀，我是 Chat 助手。你可以直接提问，也可以上传一张图片让我分析。发送前可以勾选要使用的知识库文件。</div></div>
+    </section>
+    <form id="chatForm" class="composer">
+      <div id="imagePreview" class="image-preview" hidden></div>
+      <div class="composer-tools">
+        <button id="composerContextBtn" class="tool-toggle kb-toggle" type="button" aria-pressed="false">📚 知识库嵌入</button>
+        <label id="composerWebToggle" class="tool-toggle web-toggle" aria-pressed="false"><input id="webSearchToggle" type="checkbox" /> 🌐 联网</label>
+        <label id="composerReasoningToggle" class="tool-toggle reasoning-toggle" aria-pressed="false"><input id="reasoningToggle" type="checkbox" /> 🧠 思考</label>
+        <label class="tool-toggle file"><input id="fileInput" name="files" type="file" accept="image/png,image/jpeg,image/webp,image/gif,.txt,.md,.markdown,.docx,.py,.js,.mjs,.cjs,.ts,.tsx,.jsx,.java,.c,.cpp,.cc,.cxx,.h,.hpp,.cs,.go,.rs,.php,.rb,.swift,.kt,.kts,.sh,.bash,.zsh,.fish,.ps1,.bat,.cmd,.sql,.html,.htm,.css,.scss,.json,.jsonl,.yaml,.yml,.xml,.toml,.ini,.conf,.config,.example,.log,.csv" multiple /><span>📎 文件</span></label>
+      </div>
+      <textarea id="messageInput" name="message" placeholder="输入消息，Shift+Enter 换行..." rows="1"></textarea>
+      <button id="sendBtn" type="submit">发送</button>
+    </form>
+    <div id="shareBar" class="share-bar" hidden><span id="shareStatus">选择要分享的对话</span><button id="shareDownloadBtn" type="button">生成精美 HTML</button><button id="shareCancelBtn" type="button">取消</button></div>
+    <div id="fileHint" class="hint"></div>
+    </main>
+  </div>
+  <script src="/chat/vendor/markdown-it.min.js?v=20260516-2040"></script>
+  <script src="/chat/vendor/katex.min.js?v=20260516-2040"></script>
+  <script src="/chat/vendor/texmath.js?v=20260516-2040"></script>
+  <script src="/chat/vendor/purify.min.js?v=20260516-2040"></script>
+  <script src="/chat/app.js?v=20260518-0012"></script>
+</body>
+</html>
